@@ -23,4 +23,6 @@ struct Vector2 {
 	friend Vector2 operator * (const Vector2& vec, float scalar) {
 		return Vector2(vec.x * scalar, vec.y * scalar);
 	}
+
+	static const Vector2 zero;
 };

@@ -1,10 +1,10 @@
 #pragma once
+#include <vector>
 #include "Window.h"
 #include "Renderer.h"
 #include "Vector2.h"
-#include "Timer.h"
-#include "Ball.h"
-#include <vector>
+#include "Actor.h"
+using std::vector;
 
 class Game
 {
@@ -31,21 +31,16 @@ public:
 private:
 	Game() :
 		isRunning(true),	//Singleton Constructor is private
-		paddlePosLeft({ 50, 100 }),
-		paddlePosRight({ 974, 100 }),
-		paddleVelocity({ 0, 450 }),
-		paddleDirectionLeft(0),
-		paddleDirectionRight(0),
-		wallThickness(10),
-		topWall(Rectangle()),
-		bottomWall(Rectangle()),
-		balls({ Ball(Vector2(100,100), Vector2(500,100)), Ball(Vector2(300,300), Vector2(500,100)), Ball(Vector2(400,400), Vector2(100,50)) })
+		isUpdatingActors(false)
 	{}
 
 public:
 	bool initialize();
 	void loop();
 	void close();
+
+	void addActor(Actor* actor);
+	void removeActor(Actor* actor);
 
 private:
 	void processInput();
@@ -56,19 +51,7 @@ private:
 	bool isRunning;
 	Renderer renderer;
 
-	Rectangle topWall;
-	Rectangle bottomWall;
-	const float wallThickness = 10;
-
-	const float ballSize = 10;
-
-	Vector2 paddlePosLeft;
-	Vector2 paddlePosRight;
-	Vector2 paddleVelocity;
-	const float paddleWidth = 10;
-	const float paddleHeight = 64;
-	float paddleDirectionLeft;
-	float paddleDirectionRight;
-
-	std::vector<Ball> balls = {};
+	bool isUpdatingActors;
+	vector<Actor*> actors;
+	vector<Actor*> pendingActors;
 };

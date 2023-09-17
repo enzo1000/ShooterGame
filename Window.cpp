@@ -14,7 +14,7 @@ bool Window::initialize() {
 	}
 
 	//Create the window (name, positionx, y, dimension, flag).
-	SDLWindow = SDL_CreateWindow("Wall Pong", 100, 100, width, height, 0);	//0 for flag
+	SDLWindow = SDL_CreateWindow("Shooter Game", 100, 100, width, height, 0);	//0 for flag
 	if (!SDLWindow) {
 		Log::error(LogCategory::System, "Failed to create window");
 		return false;
