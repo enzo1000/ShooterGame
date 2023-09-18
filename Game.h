@@ -3,6 +3,7 @@
 #include "Window.h"
 #include "Renderer.h"
 #include "Vector2.h"
+#include "Assets.h"
 #include "Actor.h"
 using std::vector;
 
@@ -36,7 +37,9 @@ private:
 
 public:
 	bool initialize();
+	void load();
 	void loop();
+	void unload();
 	void close();
 
 	void addActor(Actor* actor);

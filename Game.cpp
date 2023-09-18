@@ -104,3 +104,19 @@ void Game::removeActor(Actor* actor) {
 		actors.pop_back();
 	}
 }
+
+void Game::load()
+{
+	Assets::loadTexture(renderer, "Res\Ship01.png", "ship01");
+}
+
+void Game::unload() {
+	//Delete actors
+	//Because ~Actor calls RemoveActor, have to use a different style loop
+	while (!actors.empty()) {
+		delete actors.back();
+	}
+
+	//Ressources
+	Assets::clear();
+}
