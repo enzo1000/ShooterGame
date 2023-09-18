@@ -363,5 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 #Perso
-*.vcxproj
-*.vcxproj.filters
+.vcxproj
+.vcxproj.filters
