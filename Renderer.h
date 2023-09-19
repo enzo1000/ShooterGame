@@ -1,6 +1,6 @@
 #pragma once
-#include "Rectangle.h"
 #include <SDL.h>
+#include <SDL_image.h>
 #include "Window.h"
 
 class Renderer
@@ -12,9 +12,10 @@ public:
 
 	bool initialize(Window& window);
 	void beginDraw();
-	void drawRect(Rectangle& rect);
 	void endDraw();
 	void close();
+
+	inline SDL_Renderer* toSDLRenderer() const { return SDLRenderer; }
 
 private:
 	SDL_Renderer* SDLRenderer = nullptr;

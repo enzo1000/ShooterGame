@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 #Perso
 *.vcxproj*
+.vcxproj.filters

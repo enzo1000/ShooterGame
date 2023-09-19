@@ -11,6 +11,10 @@ bool Renderer::initialize(Window& window) {
 		Log::error(LogCategory::Video, "Failed to create renderer");
 		return false;
 	}
+	if (IMG_Init(IMG_INIT_PNG) == 0) {
+		Log::error(LogCategory::Video, "Unable to initialize SDL_Image");
+		return false;
+	}
 	return true;
 }
 
@@ -21,12 +25,6 @@ void Renderer::beginDraw() {	//Initialize the color and clear the screen
 
 void Renderer::endDraw() {	//Update the screen with rendering performed
 	SDL_RenderPresent(SDLRenderer);
-}
-
-void Renderer::drawRect(Rectangle& rect) {
-	SDL_SetRenderDrawColor(SDLRenderer, 255, 255, 255, 255);
-	SDL_Rect SDLRect = rect.toSDLRect();
-	SDL_RenderFillRect(SDLRenderer, &SDLRect);
 }
 
 void Renderer::close() {
